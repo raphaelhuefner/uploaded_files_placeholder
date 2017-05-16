@@ -2,8 +2,6 @@
 
 namespace Raphaelhuefner\UploadedFilesPlaceholder;
 
-use Commando\Command as Command;
-
 class Commandline {
     protected $options = NULL;
 
@@ -12,7 +10,17 @@ class Commandline {
     }
 
     public function scanCommandline() {
-        $this->options = new Command();
+        if (file_exists(dirname(__DIR__) . '/vendor/autoload.php')) {
+            $this->scanCommandlineWithCommando();
+        }
+        else {
+            $commandlineLight = new Commandline\Light(['field-separator', 'source-directory', 'destination-directory']);
+            $this->options = $commandlineLight->getOptions();
+        }
+    }
+
+    public function scanCommandlineWithCommando() {
+        $this->options = new Commando\Command();
 
         $this->options->option('field-separator')
             ->aka('f')
@@ -41,7 +49,7 @@ class Commandline {
         }
 
         if (! isset($this->options[$optionName])) {
-            throw new Exception('Could not find command line option ' . $optionName);
+            throw new \Exception('Could not find command line option ' . $optionName);
         }
 
         return $this->options[$optionName];
