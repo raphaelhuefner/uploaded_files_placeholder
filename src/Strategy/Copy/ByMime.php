@@ -12,7 +12,7 @@ class ByMime implements StrategyInterface {
     }
 
     public function handle(array $file, $sourceDirectory, $destinationDirectory) {
-        if (isset($this->mimeTypes[$file['mimeType']])) {
+        if (in_array($file['mimeType'], $this->mimeTypes)) {
             $sourceFileName = rtrim($sourceDirectory, '/') . '/' . $file['dirName'] . '/'  . $file['baseName'];
             $destinationFileName = rtrim($destinationDirectory, '/') . '/' . $file['dirName'] . '/'  . $file['baseName'];
 

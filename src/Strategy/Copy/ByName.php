@@ -12,7 +12,7 @@ class ByName implements StrategyInterface {
     }
 
     public function handle(array $file, $sourceDirectory, $destinationDirectory) {
-        if (isset($this->names[$file['baseName']])) {
+        if (in_array($file['baseName'], $this->names)) {
             $sourceFileName = rtrim($sourceDirectory, '/') . '/' . $file['dirName'] . '/'  . $file['baseName'];
             $destinationFileName = rtrim($destinationDirectory, '/') . '/' . $file['dirName'] . '/'  . $file['baseName'];
 
