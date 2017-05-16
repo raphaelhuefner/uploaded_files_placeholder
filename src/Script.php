@@ -27,8 +27,10 @@ class Script {
                 'application/pdf' => 'placeholder.pdf',
                 'text/rtf' => 'placeholder.rtf',
                 'application/msword' => 'placeholder.doc',
-                'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'placeholder.docx',
+                'application/vnd.ms-office' => 'placeholder.xls',
                 'application/vnd.openxmlformats-officedocument.presentationml.presentation' => 'placeholder.pptx',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'placeholder.xlsx',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'placeholder.docx',
             ]
         ),
         new Strategy\StaticPlaceholder\ByName(
@@ -38,10 +40,15 @@ class Script {
             ]
         ),
         new Strategy\Copy\ByMime([
-            'application/x-gzip',
+            'text/plain', // TODO exclude .mysql and maybe .csv, deal with shape file parts
+            'application/gzip', // TODO exclude .mysql.gz and .sql.gz
+            'application/x-gzip', // TODO exclude .mysql.gz and .sql.gz
             'application/x-empty',
+            'inode/x-empty',
             'application/xml', // TODO .kml
-            'application/zip', // TODO shape files
+            'application/zip', // TODO shape files, .kmz
+            'application/octet-stream', // TODO deal with shape file parts
+            'application/x-dbf', // TODO shape files
         ]),
         new Strategy\Copy\ByName([
             '.htaccess',
