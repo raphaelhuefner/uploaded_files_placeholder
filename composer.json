@@ -1,0 +1,27 @@
+{
+    "name": "raphaelhuefner/uploaded-files-placeholder",
+    "description": "Create folder structure with space-saving placeholder files in place of files typically uploaded to websites.",
+    "license": "LGPL-3.0+", 
+    "authors": [
+        {
+            "name": "Raphael Huefner",
+            "email": "raphaelhuefner@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "nategood/commando": "~0.2.9"
+    },
+    "require-dev": {
+        "php": ">=5.6.0",
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {"Raphaelhuefner\\UploadedFilesPlaceholder\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Raphaelhuefner\\UploadedFilesPlaceholder\\Tests\\": "tests/"
+        }
+    }
+}
