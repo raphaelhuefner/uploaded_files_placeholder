@@ -17,14 +17,18 @@ class Script {
 
     protected function getStrategies() {
       return [
-        new Strategy\Image\Png(),
+        new Strategy\Image\Gif(),
         new Strategy\Image\Jpg(),
+        new Strategy\Image\Png(),
         new Strategy\StaticPlaceholder\ByMime(
             dirname(__DIR__) . '/placeholders/',
             [
                 // @see https://brendanzagaeski.appspot.com/0004.html for minimal PDF file.
                 'application/pdf' => 'placeholder.pdf',
-                // 'application/x-gzip' => 'placeholder.gz',
+                'text/rtf' => 'placeholder.rtf',
+                'application/msword' => 'placeholder.doc',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'placeholder.docx',
+                'application/vnd.openxmlformats-officedocument.presentationml.presentation' => 'placeholder.pptx',
             ]
         ),
         new Strategy\StaticPlaceholder\ByName(
@@ -36,6 +40,8 @@ class Script {
         new Strategy\Copy\ByMime([
             'application/x-gzip',
             'application/x-empty',
+            'application/xml', // TODO .kml
+            'application/zip', // TODO shape files
         ]),
         new Strategy\Copy\ByName([
             '.htaccess',

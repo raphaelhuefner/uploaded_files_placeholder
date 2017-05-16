@@ -29,6 +29,7 @@ class Replacer {
                 $fallback = new Strategy\Copy\Fallback();
                 $fallback->handle($file, $this->sourceDirectory, $this->destinationDirectory);
                 $this->statistics['fallback'][$filePath] = $file;
+                $this->statistics['fallbackByMimeType'][$file['mimeType']][$file['extension']] = isset($this->statistics['fallbackByMimeType'][$file['mimeType']][$file['extension']]) ? $this->statistics['fallbackByMimeType'][$file['mimeType']][$file['extension']] + 1 : 1;
             }
         }
     }
