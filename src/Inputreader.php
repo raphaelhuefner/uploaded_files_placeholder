@@ -26,6 +26,9 @@ class Inputreader {
             $mime = trim($mime);
             list($mimeType, $encoding) = explode('; charset=', $mime);
             $dirName = dirname($fileName);
+            if ('.' == $dirName) {
+              $dirName = '';
+            }
             $baseName = basename($fileName);
             $extension = Utility::getFileNameExtension($baseName);
             $this->files[$fileName] = [

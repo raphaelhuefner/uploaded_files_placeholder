@@ -12,4 +12,18 @@ class Utility {
         }
         return $lastPart;
     }
+
+    static public function makeDirForFile($fileName) {
+        $dirName = dirname($fileName);
+        if (is_dir($dirName)) {
+            return is_writable($dirName);
+        }
+        else {
+            return mkdir($dirName, 0755, TRUE);
+        }
+    }
+
+    static public function getDirWithTrailingSlash($dir) {
+        return ('' == $dir) ? '' : ($dir . '/');
+    }
 }
