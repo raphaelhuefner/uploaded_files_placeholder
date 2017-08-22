@@ -33,6 +33,14 @@ class Script {
                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'placeholder.xlsx',
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'placeholder.docx',
                 'image/x-ico' => 'placeholder.ico',
+                'image/x-ms-bmp' => 'placeholder.bmp',
+                'audio/mpeg' => 'placeholder.mp3',
+                'video/mp4' => 'placeholder.mp4',
+                'image/svg+xml' => 'placeholder.svg',
+                'image/tiff' => 'placeholder.tif',
+                'audio/x-wav' => 'placeholder.wav',
+                'video/webm' => 'placeholder.webm',
+                'image/webp' => 'placeholder.webp',
             ]
         ),
         new Strategy\SymlinkPlaceholder\ByName(
